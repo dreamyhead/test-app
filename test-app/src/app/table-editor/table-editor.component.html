@@ -1,1 +1,6 @@
-<p>table-editor works!</p>
+<div class="table-editor-block">
+  <app-table *ngIf="(parsedData$ | async)!.length; else textarea"></app-table>
+  <ng-template #textarea>
+    <app-textarea></app-textarea>
+  </ng-template>
+</div>

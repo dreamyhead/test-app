@@ -1,0 +1,19 @@
+<div>
+  <table class="table table-bordered" *ngIf="parsedData$ | async as parsedData">
+    <thead>
+      <tr>
+        <th scope="col" *ngFor="let kv of parsedData[0] | keyvalue">{{kv.key}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let obj of parsedData">
+        <td *ngFor="let kv of obj | keyvalue">
+          <input class="form-control" type="text" [value]="kv.value" (change)="onChange(obj, kv.key, $event)">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="actions">
+    <button (click)="push()" type="button" class="btn mt-3 btn-primary">Выгрузить</button>
+  </div>
+</div>
